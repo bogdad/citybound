@@ -73,6 +73,7 @@ impl Renderable for PlanManager {
                 } else {
                     Mesh::empty()
                 };
+                let lm = line_mesh.clone();
                 renderer_id.update_individual(
                     RenderLayers::PlanningGestureLines as u32 + i as u32,
                     line_mesh,
@@ -80,6 +81,7 @@ impl Renderable for PlanManager {
                     true,
                     world,
                 );
+                println!("preview {:?}", lm);
             }
         }
 

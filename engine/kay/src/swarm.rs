@@ -154,9 +154,11 @@ impl<A: Actor + Clone> Swarm<A> {
                 (fate, actor.is_still_compact())
             } else {
                 println!(
-                    "Tried to send {} packet to {} actor of wrong version!",
+                    "Tried to send {} packet to {} actor of wrong version! {} {}",
                     unsafe {::std::intrinsics::type_name::<M>()},
-                    unsafe {::std::intrinsics::type_name::<A>()}
+                    unsafe {::std::intrinsics::type_name::<A>()},
+                    packet.recipient_id.instance_id,
+                    packet.recipient_id.version,
                 );
                 return;
             }

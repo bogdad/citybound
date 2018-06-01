@@ -340,3 +340,27 @@ impl Batch {
         }
     }
 }
+
+
+#[cfg(test)]
+mod tests {
+
+    use ::render_context::RenderContext;
+    use glium::backend::glutin::Display;
+    use glium::glutin::{EventsLoop, ContextBuilder, WindowBuilder};
+    use kay::External;
+
+    #[test]
+    fn display_mesh() {
+        let window_builder = WindowBuilder::new()
+            .with_title(format!("Citybound (machine {})", 0))
+            .with_dimensions(1920, 1080)
+            .with_multitouch();
+        let context = ContextBuilder::new().with_vsync(true);
+        let events_loop = EventsLoop::new();
+        let window = Display::new(window_builder, context, &events_loop).unwrap();
+
+        let render_context = RenderContext::new(&External::new(window), (1.0, 1.0, 1.0, 1.0));
+
+    }
+}
